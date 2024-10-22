@@ -1,0 +1,91 @@
+openapi: 3.0.1
+info:
+  title: Edgio REST API - Partner
+  version: 0.1.0
+  x-logo:
+    url: 'https://docs.edg.io/_next/static/media/edgio-dark.ea0d686f.webp'
+    backgroundColor: '#FFFFFF'
+    altText: 'Logo'
+    href: 'https://docs.edg.io'
+  description:
+    $ref: description.md
+tags:
+  - name: partner-members
+    x-displayName: Partner Members
+    description: |
+
+      Automate the management of the members of your partner account.
+
+      Manage the members for any organization associated with your partner account by using an API client created within your partner account to request our [customer-facing member endpoints](https://docs.edg.io/rest_api/#tag/members).
+
+  - name: partners
+    x-displayName: Partner Account
+    description: |
+
+      Automate the management of your partner account.
+  - name: organizations
+    x-displayName: Organizations
+    description: Automate organization management.
+paths:
+  /accounts/v0.1/partners/{partner_id}/members/{member_id}:
+    $ref: paths/accounts_v0.1_partners_{partner_id}_members_{member_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - configScope: [app.accounts]
+  /accounts/v0.1/partners/{partner_id}/members:
+    $ref: paths/accounts_v0.1_partners_{partner_id}_members.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - configScope: [app.accounts]
+  /accounts/v0.1/partners/{partner_id}/logo-dark:
+    $ref: paths/accounts_v0.1_partners_{partner_id}_logo-dark.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - configScope: [app.accounts]
+  /accounts/v0.1/partners/{partner_id}/logo:
+    $ref: paths/accounts_v0.1_partners_{partner_id}_logo.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - configScope: [app.accounts]
+  /accounts/v0.1/partners/{partner_id}:
+    $ref: paths/accounts_v0.1_partners_{partner_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - configScope: [app.accounts]
+  /accounts/v0.1/organizations/{organization_id}:
+    $ref: paths/accounts_v0.1_organizations_{organization_id}.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - configScope: [app.accounts]
+  /accounts/v0.1/organizations:
+    $ref: paths/accounts_v0.1_organizations.yaml
+    servers:
+      - url: 'https://edgioapis.com'
+    security:
+      - configScope: [app.accounts]
+components:
+  securitySchemes:
+    accountsScope:
+      type: oauth2
+      description: Learn how to [generate and pass a token.](#section/Access-Tokens)
+      flows:
+        clientCredentials:
+          tokenUrl: https://id.edgio.app/connect/token
+          scopes:
+            app.accounts: Authorizes full access to manage organizations, properties, environments, and members.
+x-tagGroups:
+  - name: Partner Members
+    tags:
+      - partner-members
+  - name: Partner Account
+    tags:
+      - partners
+  - name: Organizations
+    tags:
+      - organizations

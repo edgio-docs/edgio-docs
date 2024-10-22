@@ -1,0 +1,118 @@
+type: object
+properties:
+  '@type':
+    type: string
+    description: The resource's type.
+  '@id':
+    type: string
+    description: The resource's relative path.
+  '@links':
+    type: object
+    description: Links to related resources.
+  id:
+    type: string
+    description: The resource's system-defined ID.
+  partner_id:
+    type: string
+    description: >-
+      The system-defined ID for the partner account under which the organization
+      was created.
+  name:
+    type: string
+    description: The organization's name
+  pci_compliance:
+    type: string
+    enum:
+      - pci
+      - non_pci
+      - mixed
+    description: >
+      The organization's PCI compliance status. This state is determined by
+      checking PCI-compliance across all environments associated with this
+      organization. Valid values are:
+
+
+      -   **pci:** All environments are PCI-compliant.
+
+      -   **non_pci:** All environments use our entire network.
+
+      -   **mixed:** Some environments are PCI-compliant.
+  pci_dns_domain_name:
+    type: string
+    description: >
+      The organization's PCI-compliant DNS domain.
+
+
+      Serve traffic through our PCI-compliant network by pointing your CNAMEs to
+      this domain.
+  non_pci_dns_domain_name:
+    type: string
+    description: >
+      The organization's DNS domain for standard traffic. Standard traffic can
+      use our entire network.
+
+
+      Serve traffic that does not require PCI-compliance by pointing your CNAMEs
+      to this domain.
+  tier:
+    type: string
+    enum:
+      - free
+      - professional
+      - enterprise
+      - premier
+    description: The organization's tier.
+  limit_max_environments:
+    type: integer
+    format: int32
+    description: The organization's limit on the number of environments.
+  features:
+    type: json
+    description: The organization's IDS features.
+  mtls_enabled:
+    type: boolean
+    description: The organization's availibility of the mTLS feature.
+  domain_count:
+    type: integer
+    format: int32
+    description: The organization's number of domains.
+  edge_functions_enabled:
+    type: boolean
+    description: The organization's availibility of the Edge Functions feature.
+  asm_enabled:
+    type: boolean
+    description: The organization's availibility of the ASM feature.
+  asm_show_by_default:
+    type: boolean
+    description: The organization's setting to show ASM by default.
+  asm_seed_validation:
+    type: string
+    description: The organization's ASM seed values.
+  asm_collection_limit:
+    type: integer
+    format: int32
+    description: The organization's upper limit on ASM collections.
+  asm_asset_limit:
+    type: integer
+    format: int32
+    description: The organization's maximum limit on ASM  assets.
+  asm_allow_edgio_ips:
+    type: boolean
+    description: The organization's setting to allow ASM be accessed by Edgio IPs.
+  assets_under_management_count:
+    type: integer
+    format: int32
+    description: The organization's number of ASM assets under management.
+  created_at:
+    type: string
+    format: date-time
+    description: The organization's creation date and time (UTC).
+  updated_at:
+    type: string
+    format: date-time
+    description: The organization's last modification date and time (UTC).
+required:
+  - '@type'
+  - '@id'
+  - id
+description: Accounts_V1_Entities_Organization model

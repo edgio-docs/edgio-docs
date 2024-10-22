@@ -1,0 +1,38 @@
+type: object
+properties:
+  '@type':
+    type: string
+    example: Error
+    description: The error type.
+  code:
+    type: string
+    enum:
+      - internal_error
+    description: A human readable error code following `snake_case`.
+  title:
+    type: string
+    enum:
+      - Internal server error
+    description: The main error heading.
+  description:
+    type: string
+    example:
+      - >-
+        Something went wrong. Please try again later and contact support if the
+        problem persists.
+    description: Detailed description about the error.
+  status_code:
+    type: integer
+    format: int32
+    enum:
+      - 500
+    description: Represents the HTTP status code associated with the response.
+  details:
+    type: array
+    items:
+      $ref: ./BaseApi_Entities_BaseHyperionErrorDetail.yaml
+    description: Describes the error.
+required:
+  - '@type'
+  - title
+description: BaseApi_Entities_Error_ServerError model

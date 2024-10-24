@@ -2,7 +2,12 @@ new Crawler({
   rateLimit: 8,
   startUrls: ['https://docs.edg.io'],
   renderJavaScript: false,
-  sitemaps: [],
+  sitemaps: [
+    'https://docs.edg.io/',
+    'https://docs.edg.io/applications/v7',
+    'https://docs.edg.io/delivery/',
+    'https://docs.edg.io/uplynk/',
+  ],
   ignoreCanonicalTo: false,
   ignoreRobotsTxtRules: true,
   discoveryPatterns: ['https://docs.edg.io'],
@@ -13,7 +18,8 @@ new Crawler({
       pathsToMatch: [
         'https://docs.edg.io/',
         'https://docs.edg.io/applications/**',
-        'https://docs.edg.io/devlivery/**',
+        'https://docs.edg.io/delivery/**',
+        'https://docs.edg.io/uplynk/**',
       ],
       recordExtractor: ({url, $, helpers}) => {
         /**
@@ -34,16 +40,16 @@ new Crawler({
         }
 
         // guide version
-        const productType = $('meta[name="app:product]').attr('content');
-        const productVersion = $('meta[name="app:product-version]').attr(
+        const productType = $('meta[name="app:product"]').attr('content');
+        const productVersion = $('meta[name="app:product-version"]').attr(
           'content'
         );
         // todo product name and version will be the facet
-        // const version = `${productType}-${productVersion}`;
+        const version = `${productType}-${productVersion}`;
 
         // legacy - remove after delivery released
-        const version =
-          $('meta[name="app:guide-version"]').attr('content') || 'v7';
+        // const version =
+        //   $('meta[name="app:guide-version"]').attr('content') || 'v7';
 
         // remove content from guides to not be indexed
         $(

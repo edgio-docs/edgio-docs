@@ -460,9 +460,29 @@ View the technologies used by your network by navigating to the **Technologies**
 
 ## Report {/*report*/}
 
-Once you have scanned your network, {{ PRODUCT }} generates an executive-level security assessment of your organization's attack surface. You may customize this report to meet your organization's business needs. This report uses [standard Markdown syntax](https://www.markdownguide.org/basic-syntax/). This syntax has been extended to support [{{ PRODUCT }}-specific variables](#-specific-variables). 
+Once you have scanned your network, {{ PRODUCT }} generates an executive-level security assessment of your organization's attack surface. You may customize this report to meet your organization's business needs. This report uses [standard Markdown syntax](https://www.markdownguide.org/basic-syntax/). 
 
 **To modify your report**
+
+1.  Load the **Report** page.
+    {{ SECURITY_NAV }} **Attack Surface**.
+    5.  From the left-hand pane, select **Report**.
+2.  Click **Edit**.
+3.  Make the desired changes. 
+    <Tip>
+
+    You can reset the report to the default content by clicking **Revert to Default**.
+
+    </Tip>
+4.  Click **Save Changes**.
+
+<Info>
+
+All of your collections use the same report, regardless of whether you are filtering by collection. Filtering by collection tailors that report to the selected collection(s). This allows you to view and download collection-specific reports. 
+
+</Info>
+
+**To download your report**
 
 1.  Load the **Report** page.
     {{ SECURITY_NAV }} **Attack Surface**.
@@ -470,41 +490,4 @@ Once you have scanned your network, {{ PRODUCT }} generates an executive-level s
 2.  Optional. Filter the report's data by selecting one or more collections.
 
     ![ASM Report - Filtering by collection](/images/v7/security/asm-report-collection-filter.png)
-
-3.  Click **Edit**.
-4.  Make the desired changes. 
-5.  Click **Save Changes**.
-
-<Tip>
-
-You can reset the report to the default content by clicking **Revert to Default Template** when modifying a report.
-
-</Tip>
-
-**To print your report**
-
-1.  Load the **Report** page.
-    {{ SECURITY_NAV }} **Attack Surface**.
-    5.  From the left-hand pane, select **Report**.
-2.  Click **Print** to display your report in full screen mode and to open the **Print** dialog box. 
-
-    If a virtual PDF printer has been installed on your device, then you may generate a PDF instead of printing to a physical printer. 
-
-### {{ PRODUCT }}-Specific Variables {/*-specific-variables*/}
-
-Your report supports the use of {{ PRODUCT }}-specific variables. These variables, which are placeholders for key elements, are described below.
-
-| Variable                                         | Description                                                                                                                       |
-| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
-| `{logo}`                                         | Represents the {{ PRODUCT }} logo.                                                                                                |
-| `{organization_name}`                            | Represents your organization's name.                                                                                              |
-| `{counts}`                                       | Represents summary information for the detected exposures, hostnames, IP addresses, and technologies.                             |
-| `{exposures_by_priority_column_chart}`           | Represents a bar chart of exposures by priority.                                                                                  |
-| `{exposures_by_type_pie_chart}`                  | Represents a pie chart of exposures by type.                                                                                      |
-| `{exposures_by_technology_bar_chart}`            | Represents a bar chart of exposures by technology.                                                                                |
-| `{critical_technologies_list}`                   | Represents the **Technologies with Critical Vulnerabilities** section which lists vulnerabilities with a severity of 8 or higher. |
-| `{assets_graph}`                                 | Represents the **Assets** section which includes a diagram of your assets.                                                        |
-| `{protections_table_and_chart}`                  | Represents a table and a pie chart for the services through which your traffic is proxied.                                        |
-| `{high_and_critical_exposures_table}`            | Represents a table that lists your high and critical exposures that have not been resolved or mitigated.                          |
-| `{exposures_by_technology_and_severity_heatmap}` | Represents a heatmap of the number of exposures by technology and severity.                                                       |
-| `{critical_technology_names}`                    | Represents a list of your critical technologies.                                                                                  |
+3.  Click **Download PDF** to download the report as a PDF.

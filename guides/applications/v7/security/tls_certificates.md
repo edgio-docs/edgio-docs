@@ -8,10 +8,8 @@ title: TLS Certificates
 
     -   Allow {{ PRODUCT }} to [autogenerate a TLS certificate for each of your hostnames.](#autogenerating-tls-certificates)
     -   [Upload your own TLS certificate.](#uploading-your-certificate)
-    
-        <a id="wildcard-certificates" />**Wildcard Certificates:** If you plan on using a wildcard certificate, then you only need to upload it a single time. After which, it will be available for use across your organization's properties and environments if you are using a default configuration.
-        
-        If you have requested the use of our PCI-compliant network, then the wildcard certificate will only be applicable for environments that use the same network as the environment on which it was uploaded. You can check whether your environments use the same network from the **Organization DNS Configuration** section of your organization's **Settings** page. 
+
+        You may use a wildcard certificate across multiple environments once it has been uploaded to one of your environments. [Learn more.](#wildcard-certificates)
 
     <Callout type="info">
 
@@ -270,20 +268,22 @@ The following procedure indicates how to create a CSR and a private key with Ope
 
 ## Uploading Your Certificate {/*uploading-your-certificate*/}
 
-If you prefer to use your own TLS certificate (e.g., a wildcard certificate), then you may upload it to our network. By default, you only need to upload a wildcard certificate a single time. After which, it will be available for use across all of your organization's properties and environments. [Learn more.](/applications/basics/hostnames#wildcard-certificates)
+If you prefer to use your own TLS certificate, then you may upload it to our network. 
 
-Uploading a TLS certificate requires:
+**Key information:**
 
--   The `Admin` role within your organization.
--   A certificate issued by a CA.
--   The intermediate certificates (IC) used by the CA, including the CA's signing certificate.
--   The private key that was generated with the CSR.
+-   <a id="wildcard-certificates" />You may upload a TLS wildcard certificate, which allows you to secure multiple hosts with the same base domain (e.g., `*.example.com` allows you to secure `www.example.com`, `images.example.com`, `cdn.example.com`, etc.). By default, you only need to upload a wildcard certificate a single time. After which, it will be available for use across all of your organization's properties and environments. 
 
-<Important>
+    If you have requested the use of our PCI-compliant network, then the wildcard certificate will only be applicable for environments that use the same network as the environment on which it was uploaded. You can check whether your environments use the same network from the **Organization DNS Configuration** section of your organization's **Settings** page. 
 
-{{ PRODUCT }} does not automatically renew uploaded TLS certificates. You will need to upload a new TLS certificate before your current TLS certificate expires. Failure to do so before the expiration of your TLS certificate will impact your client's experience. For example, a browser may display a page warning users that their connection is not private. 
+-   Uploading a TLS certificate requires:
 
-</Important>
+    -   The `Admin` role within your organization.
+    -   A certificate issued by a CA.
+    -   The intermediate certificates (IC) used by the CA, including the CA's signing certificate.
+    -   The private key that was generated with the CSR.
+
+-   {{ PRODUCT }} does not automatically renew TLS certificates that have been manually uploaded to our network. As a result, you will need to upload a new TLS certificate before your current TLS certificate expires. Failure to do so before the expiration of your TLS certificate will impact your client's experience. For example, a browser may display a page warning users that their connection is not private. 
 
 **To upload your TLS certificate**
 

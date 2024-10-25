@@ -33,7 +33,6 @@
 | HKC | Hong Kong | Asia |
 | HKT | Thailand (AWN) | Asia |
 | HYV | Helsinki | Europe |
-| ITM | Osaka | Asia |
 | JAU | Lima, Peru | South America |
 | JNB | Johannesburg, South Africa | Europe |
 | KHH | Kaohsiung | Asia |

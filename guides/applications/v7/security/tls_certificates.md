@@ -55,6 +55,9 @@ The Let's Encrypt certificate authority (CA) must be allowed to issue certificat
     This sample CAA record indicates that the Let's Encrypt CA is allowed to issue certificates for `cdn.example.com`:
 
     `cdn.example.com.   CAA 0 issue "letsencrypt.org"`
+-   By default, some DNS service providers add `CAA` DNS record(s), while others do not allow the creation of `CAA` DNS records and therefore allow any CA to generate certificates.
+
+    Learn more about CAA DNS records: <a href="https://letsencrypt.org/docs/caa">Let's Encrypt</a>, <a href="https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization">Wikipedia</a>, <a href="https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html">Gandi</a>, and <a href="https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation">eff.org</a>
 
 **To add a CAA record to allow Let's Encrypt to generate certificates for your domains**
 
@@ -87,35 +90,25 @@ The Let's Encrypt certificate authority (CA) must be allowed to issue certificat
     -   **Name:** empty or `@` (depending on the DNS provider)
     -   **Flags:** `0`
     -   **Tag:** `issue`
-    -   **Value:** `letsencrypt.org` or `"letsencrypt.org"`
-
+    -   **Value:** `letsencrypt.org` or `"letsencrypt.org"` <!--
     **GoDaddy Example:**
 
     ![CAA Record on GoDaddy](/images/production/godaddy-caa.jpg)
 
     **Gandi Example:**
 
-    ![CAA Record on Gandi](/images/production/gandi-caa.jpg)
+    ![CAA Record on Gandi](/images/production/gandi-caa.jpg)-->
 
-    Learn more on:
+    Learn how to add a CAA record:
 
-    - [How to add a CAA record on Gandi](https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html)
-    - [How to add a CAA record on Godaddy](https://uk.godaddy.com/help/add-a-caa-record-27288)
-    - [How to add a CAA record on AWS](https://docs.aws.amazon.com/acm/latest/userguide/setup-caa.html)
-    - [How to add a CAA record on NameCheap](https://www.namecheap.com/support/knowledgebase/article.aspx/9991/38/caa-record-and-why-it-is-needed-ssl-related/)
+    -   [Gandi](https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html)
+    -   [Godaddy](https://uk.godaddy.com/help/add-a-caa-record-27288)
+    -   [NameCheap](https://www.namecheap.com/support/knowledgebase/article.aspx/9991/38/caa-record-and-why-it-is-needed-ssl-related/)
 
     Verify your CAA configuration. We recommend the following CAA lookup tools:
 
     -   [CAA Test](https://caatest.co.uk/)
     -   [Entrust CAA Lookup](https://www.entrust.com/resources/certificate-solutions/tools/caa-lookup)
-
-    <Callout type="info">
-
-      By default, some DNS service providers add `CAA` DNS record(s), while others do not allow the creation of `CAA` DNS records and therefore allow any CA to generate certificates.
-
-      Learn more about CAA DNS records: <a href="https://letsencrypt.org/docs/caa">Let's Encrypt</a>, <a href="https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization">Wikipedia</a>, <a href="https://docs.gandi.net/en/domain_names/faq/record_types/caa_record.html">Gandi</a>, and <a href="https://www.eff.org/deeplinks/2018/02/technical-deep-dive-securing-automation-acme-dns-challenge-validation">eff.org</a>
-
-    </Callout>
 
 ### Domain Control Validation {/*domain-control-validation*/}
 
@@ -277,6 +270,8 @@ The following procedure indicates how to create a CSR and a private key with Ope
 
 ## Uploading Your Certificate {/*uploading-your-certificate*/}
 
+If you prefer to use your own TLS certificate (e.g., a wildcard certificate), then you may upload it to our network. By default, you only need to upload a wildcard certificate a single time. After which, it will be available for use across all of your organization's properties and environments. [Learn more.](/applications/basics/hostnames#wildcard-certificates)
+
 Uploading a TLS certificate requires:
 
 -   The `Admin` role within your organization.
@@ -284,11 +279,11 @@ Uploading a TLS certificate requires:
 -   The intermediate certificates (IC) used by the CA, including the CA's signing certificate.
 -   The private key that was generated with the CSR.
 
-<Info>
+<Important>
 
-By default, you only need to upload a wildcard certificate a single time. After which, it will be available for use across all of your organization's properties and environments. [Learn more.](/applications/basics/hostnames#wildcard-certificates)
+{{ PRODUCT }} does not automatically renew uploaded TLS certificates. You will need to upload a new TLS certificate before your current TLS certificate expires. Failure to do so before the expiration of your TLS certificate will impact your client's experience. For example, a browser may display a page warning users that their connection is not private. 
 
-</Info>
+</Important>
 
 **To upload your TLS certificate**
 
@@ -312,6 +307,8 @@ By default, you only need to upload a wildcard certificate a single time. After 
       Contact technical customer support if the status does not become *Active* within an hour.
 
     </Callout>
+
+
 
 ## mTLS {/*mtls*/}
 

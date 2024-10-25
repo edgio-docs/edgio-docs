@@ -172,25 +172,28 @@ router.match(`/docs/v:version.x/:path*`, ({compute}) => {
       `https://${config.DOCS_PAGES_DOMAIN}${targetPath}`
     );
     const upstreamResBody = await upstreamRes.text();
-    res.setHeader('content-type', upstreamRes.headers.get('content-type'));
+    const contentType = upstreamRes.headers.get('content-type');
+    res.setHeader('content-type', contentType);
     res.statusCode = upstreamRes.status;
     res.body = upstreamResBody;
 
     if (res.statusCode.toString().match(/^4\d\d$/)) {
-      console.error(
-        'Error fetching API docs',
-        res.statusCode,
-        targetPath,
-        upstreamRes
-      );
+      console.error('Error fetching API docs', res.statusCode, targetPath);
+      return;
     }
+
+    if (!contentType?.includes('text/html')) {
+      return;
+    }
+
+    // add the version to the meta tag and append it to the head
+    const $ = load(upstreamResBody ?? '');
+    $('head').append(`<meta name="app:docs-version" content="v${v}">`);
 
     // due to relative paths in the response, if the path doesn't end with a trailing
     // slash (eg. /api/core), then assets will be requested from the wrong path (eg. /api/assets/...)
     // so we need to rewrite the paths to include the last path segment
     if (!hasTrailingSlash && !hasFileExtension) {
-      const $ = load(upstreamResBody ?? '');
-
       // prepend ${lastPathSegment} to all elements with an href or src attribute
       $('*[href], *[src]').each((i, el) => {
         const $el = $(el);
@@ -205,9 +208,9 @@ router.match(`/docs/v:version.x/:path*`, ({compute}) => {
           $el.attr('src', `${lastPathSegment}/${src}`);
         }
       });
-
-      res.body = $.html();
     }
+
+    res.body = $.html();
   });
 });
 

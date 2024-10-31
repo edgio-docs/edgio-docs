@@ -23,7 +23,7 @@ description:  |
 
   -   **REQUEST_COOKIES:** Edgio Security Premier only. Cookie value. Set the `target.value` property to the desired cookie.
 
-  -   **QUERY_ARG:** Edgio Security Premier only. Query string parameter value. Set the `target.value` property to the desired query string parameter.
+  -   **QUERY_STRING:** Edgio Security Premier only. Query string value. A request will count towards the rate limit when its query string matches the value or pattern specified within the `target.value` property.
 
   -   **BOT_SCORE:** Edgio Security Premier or Edgio Advanced Bot required. The bot score associated with the request.
 
@@ -39,5 +39,5 @@ enum:
   - REMOTE_JA3
   - REMOTE_JA4
   - REQUEST_COOKIES
-  - QUERY_ARG
+  - QUERY_STRING
   - BOT_SCORE

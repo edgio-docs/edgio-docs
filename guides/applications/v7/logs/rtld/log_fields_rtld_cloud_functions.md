@@ -79,6 +79,7 @@ The `logs` array contains an object for each log entry associated with the curre
 
         -   **bodyLength:** Indicates the length of the payload.
         -   **bodyTruncated:** Indicates whether the payload was truncated.
+        -   **duration:** Indicates the total length of time, in milliseconds, for an upstream request. This metric measures the duration between when a request is submitted from the {{ PRODUCT }} cloud and a response is received from an origin server.
         -   **headers:** Contains request headers.
         -   **host:** Indicates the request's host.
         -   **method:** Indicates the request's HTTP method (e.g., `GET`, `HEAD`, and `POST`).

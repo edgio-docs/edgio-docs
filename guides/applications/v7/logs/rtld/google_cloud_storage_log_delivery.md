@@ -17,7 +17,7 @@ RTLD may automatically deliver compressed log data to a Google Cloud Storage buc
     -   Set the **Encryption** option to a Google-managed encryption key.
     -   Authorize RTLD to upload content by adding the following user with the **Storage Object Creator** role:
 
-        `vdms-partner-gcs-transfer@maw-partner-gcs.iam.gserviceaccount.com`
+        `real-time-log-delivery@durable-firefly-334516.iam.gserviceaccount.com`
 
         [View Google Cloud Storage documentation on how to set up an IAM policy for a bucket.](https://cloud.google.com/storage/docs/access-control/using-iam-permissions)
 
@@ -45,7 +45,7 @@ RTLD may automatically deliver compressed log data to a Google Cloud Storage buc
 
 2.  Add the following user to the bucket and assign it the **Storage Object Creator** role:
 
-    `vdms-partner-gcs-transfer@maw-partner-gcs.iam.gserviceaccount.com`
+    `real-time-log-delivery@durable-firefly-334516.iam.gserviceaccount.com`
 
 3.  Optional. Set up Google Cloud to process the log data that will be posted to it.
 

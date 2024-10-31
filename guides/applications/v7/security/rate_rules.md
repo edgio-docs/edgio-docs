@@ -274,7 +274,7 @@ The types of prerequisites that may be defined are described below.
     -   **Condition groups per rate rule:** 5
     -   **Conditions per condition group:** 5
     -   **# of values per condition:**
-        -   **IP Address:** 200
+        -   **IP Address:** 300
         -   **All Other Conditions:** 100
 
         <Callout type="info">

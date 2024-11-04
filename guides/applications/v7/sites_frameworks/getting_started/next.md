@@ -68,7 +68,7 @@ This will automatically add all of the required dependencies and files to your p
 In the generated `{{ CONFIG_FILE }}` file, you can customize how {{ PRODUCT }} builds and runs your Next.js application. Using the `next` key, you can configure the following options:
 
 | Option                       | Description                                                                                                                                                                                                                            | Default |
-| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
 | `generateSourceMaps`         | Output sourcemaps so that stack traces have original source filenames and line numbers when tailing the logs in the {{ PORTAL }}.                                                                                                      | `true`  |
 | `disableImageOptimizer`      | Disables the {{ PRODUCT }} image optimizer and allows to use the Next's built in image optimizer. <a id="disableImageOptimizer"></a>                                                                                                   | `false` |
 | `disableServiceWorker`       | Disables the build of the service worker.                                                                                                                                                                                              | `false` |
@@ -77,6 +77,7 @@ In the generated `{{ CONFIG_FILE }}` file, you can customize how {{ PRODUCT }} b
 | `optimizeServerBuild`        | Optimizes the server build by bundling all server assets and decreasing the overall startup time. This option has no effect on apps with the {{ PRODUCT }} cloud build. This option is set to `false` for Next 13.x apps.              | `true`  |
 | `proxyToServerlessByDefault` | Reduces the number of generated rules by adding the default catch-all rule that proxies all requests to Next.js to the {{ PRODUCT }} cloud. Set this option to `false` if you want to proxy all unmatched pages to a different origin. | `true`  |
 | `enforceTrailingSlash`       | Adds rules with Next's internal redirects that either add or remove a trailing slash. When set to `false`, the redirect is performed only by the Next.js server itself and doesn't affect other origins.                               | `true`  |
+| `turbopack`                  | Enables TurboPack bundler instead of default Webpack for your Next.js app in the development mode. This option requires Next.js 13 and newer.                                                                                          | `false` |
 
 ## {{ PRODUCT }} Next.js Plugin {/* next-plugin */}
 

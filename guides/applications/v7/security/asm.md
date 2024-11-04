@@ -144,7 +144,7 @@ You may create, modify, and delete collections. Finally, you can reset a collect
             Don't forget to restart the Nessus service after the change.    
             See the [Nessus Settings documentation](https://docs.tenable.com/nessus/Content/SettingsAdvanced.htm#User_Interface) for more details.
             ![Tenable Nessus Settings interface](/images/v7/security/asm-tenable-nessus-settings.png)
-        4.  if you use a self-signed certificate, uncheck the **Verify Cert** option to disable certificate verification but keep in mind that this is not recommended for production environments.
+        4.  If you use a self-signed certificate, uncheck the **Verify Cert** option to disable certificate verification but keep in mind that this is not recommended for production environments.
         5.  In the **Access Key** option, paste your Nessus access key. You can generate a new pair of access and secret keys in the Nessus web interface under `My Account` -> `API Keys` -> `Generate`.    
             See the [Nessus documentation](https://docs.tenable.com/nessus/Content/GenerateAnAPIKey.htm) for more details.
             ![Tenable Nessus Api Keys interface](/images/v7/security/asm-tenable-nessus-api-keys.png)
@@ -163,7 +163,7 @@ You may create, modify, and delete collections. Finally, you can reset a collect
             Your Security Center instance must be accessible for {{PRODUCT}} from the internet. Instances hosted on a private network that require a VPN connection or proxy servers are not supported.
         3.  Make sure that API Key Authentication is enabled on your Security Center instance. You can enable the API Key Authentication in the Security Center web interface under `System` -> `Configuration` -> `Security` -> `Authentication Settings`, clicking on the `Allow API Keys` option and saving the changes.    
             See the [Security Center Authentication documentation](https://docs.tenable.com/security-center/Content/EnableAPIKeys.htm) for more details.
-        4.  if you use a self-signed certificate, uncheck the **Verify Cert** option to disable certificate verification but keep in mind that this is not recommended for production environments.
+        4.  If you use a self-signed certificate, uncheck the **Verify Cert** option to disable certificate verification but keep in mind that this is not recommended for production environments.
         5.  In the **Access Key** option, paste your Security Center access key. You can generate a new pair of access and secret keys in the Security Center web interface under `Users` -> `API Keys` -> `Generate`.    
             See the [Security Center documentation](https://docs.tenable.com/security-center/Content/GenerateAPIKey.htm) for more details.
         6.  In the **Secret Key** option, paste the generated secret key from the previous step.

@@ -145,7 +145,7 @@ You may create, modify, and delete collections. Finally, you can reset a collect
             **Example:** `https://my-tenable-ns.com:8834`
 
         3.  Make sure that the REST API is enabled on your Nessus instance. 
-        Enable the REST API through the Nessus web interface (**Settings > **Advanced** > **User Interface**) by setting the **Disable API** option to `No` and then restarting the Nessus service.
+        Enable the REST API through the Nessus web interface (**Settings** > **Advanced** > **User Interface**) by setting the **Disable API** option to `No` and then restarting the Nessus service.
 
             See the [Nessus Settings documentation](https://docs.tenable.com/nessus/Content/SettingsAdvanced.htm#User_Interface) for more details.
             ![Tenable Nessus Settings interface](/images/v7/security/asm-tenable-nessus-settings.png)

@@ -61,7 +61,10 @@ A short description of the information contained for each variable referenced in
 -   **REQUEST_BODY_LENGTH:** Contains the size of the request body in bytes.
 -   **REQUEST_COOKIES:** Contains the set of request cookie values.
 -   **REQUEST_COOKIES_NAMES:** Contains the set of request cookie names.
--   **REQUEST_FILENAME:** Identifies the request's file name. This value does not include query strings.
+-   **REQUEST_FILENAME:** Identifies the request's base URL. This value does not include query strings.
+
+    **Example:** `/path/page.html`
+
 -   **REQUEST_HEADERS:** Contains a set of request header values.
 -   **REQUEST_HEADERS_NAMES:** Contains a set of request header names.
 -   **REQUEST_LINE:** Contains the request method, URL, and HTTP version.

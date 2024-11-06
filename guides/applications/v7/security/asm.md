@@ -13,6 +13,7 @@ Definitions for key concepts are provided below.
     -   An asset is registered for each hostname, IP address, and GitHub repository defined as a seed.
     -   {{ PRODUCT }} uses seeds to determine which network segments will be scanned. Each hostname and IP address identified through this scan is also registered as an asset. 
     -   Each Snyk and Amazon GuardDuty seed may target an entire organization or system. {{ PRODUCT }} will generate an asset for each Snyk target and AWS resource associated with those configurations.
+    -   Each Tenable Nessus and Tenable Security Center seed may target all or specific folders or repositories associated with an instance. {{ PRODUCT }} will generate an asset for each folder or repository associated with those configurations.
 -   **Exposures:** By default, {{ PRODUCT }} scans your network for:
     -   Common Vulnerabilities and Exposures (CVE). A CVE represents a known security vulnerability or exposure for a software package. 
     -   Common Weakness Enumeration (CWE). A CWE identifies a common software or hardware weakness that can potentially introduce a security vulnerability. 
@@ -20,7 +21,7 @@ Definitions for key concepts are provided below.
     -   TLS issues.
     -   Response header violations. For example, a required header may be missing or it can assigned an invalid value.
 
-    Additionally, {{ PRODUCT }} can pull vulnerabilities identified by GitHub, Snyk, or Amazon GuardDuty.
+    Additionally, {{ PRODUCT }} can pull vulnerabilities identified by GitHub, Snyk, Amazon GuardDuty, Tenable Nessus, or Tenable Security Center.
 
 -   **Protections:** {{ PRODUCT }} identifies the security solutions that are protecting the assets associated with the scanned network segment.
 -   **Technologies:** {{ PRODUCT }} identifies the software and services used by the assets associated with the scanned network segment.
@@ -58,6 +59,10 @@ Each collection must contain at least one seed. Use one or more seed(s) to:
 -   Define a GitHub repository from which security vulnerabilities identified by GitHub will be pulled. These vulnerabilities are identified through Dependabot, code scanning, and secret scanning.
 -   Define a Snyk instance from which security vulnerabilities will be pulled.
 -   Define an Amazon GuardDuty instance and the region(s) from which findings will be pulled.
+-   Define a Tenable Nessus instance from which {{PRODUCT}} will import assets and vulnerabilities from each folder discovered in the latest scan.
+    -   Restrict vulnerability and asset discovery to specific folders by clearing the **Discover assets from all folders** option and then selecting the desired folders. 
+    -   Multiple Nessus instances within your network can be added to the same organization. {{PRODUCT}} will automatically remove duplicate assets and vulnerabilities.
+-   Define a Tenable Security Center instance from which {{PRODUCT}} will import assets and vulnerabilities from each repository discovered in the latest scan. Restrict vulnerability and asset discovery to specific repositories by clearing the **Discover assets from all repositories** option and then selecting the desired repositories.
 
 Once you have defined the desired seed(s), {{ PRODUCT }} will scan your network for exposures and retrieve vulnerabilities identified by GitHub and Snyk. This allows {{PRODUCT}} to generate a consolidated list of vulnerabilities and exposures that provides full visibility into your organization's attack surface. 
     
@@ -132,6 +137,60 @@ You may create, modify, and delete collections. Finally, you can reset a collect
         3.  In the **Secret Access Key** option, type your Amazon GuardDuty [secret access key](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey).
         4.  In the **Regions** option, type the regions for which findings will be pulled.
 
+    -   **Tenable Nessus:**
+
+        1.  In the **Name** option, type a descriptive name.
+        2.  In the **Nessus Instance URL** option, type the full URL for a Nessus instance that is accessible by {{ PRODUCT }}. Instances hosted on a private network that require a VPN connection or proxy servers are unsupported.
+
+            **Example:** `https://my-tenable-ns.com:8834`
+
+        3.  Make sure that the REST API is enabled on your Nessus instance. 
+        Enable the REST API through the Nessus web interface (**Settings** > **Advanced** > **User Interface**) by setting the **Disable API** option to `No` and then restarting the Nessus service.
+
+            See the [Nessus Settings documentation](https://docs.tenable.com/nessus/Content/SettingsAdvanced.htm#User_Interface) for more details.
+            ![Tenable Nessus Settings interface](/images/v7/security/asm-tenable-nessus-settings.png)
+        4.  If you are using a self-signed certificate, clear the **Verify Cert** option to disable certificate verification. This configuration is discouraged for production environments.
+        5.  In the **Access Key** option, paste your Nessus access key. 
+
+            Generate access and secret keys through the Nessus web interface (**My Account** > **API Keys** > **Generate**). 
+            See the [Nessus documentation](https://docs.tenable.com/nessus/Content/GenerateAnAPIKey.htm) for more details.
+            ![Tenable Nessus Api Keys interface](/images/v7/security/asm-tenable-nessus-api-keys.png)
+        6.  In the **Secret Key** option, paste your Nessus secret key.
+        7.  Make sure that the user associated with the access key has permission to access the Nessus API and the `View` scan permission. 
+            See the [Nessus User Permissions](https://developer.tenable.com/docs/permissions) for more information.
+        8.  Click on **Test Connection** to verify that {{PRODUCT}} can connect to your Nessus instance with the given credentials.
+        9.  By default, {{PRODUCT}} will discover assets and vulnerabilities from all available folders in your Nessus instance. Restrict vulnerability and asset discovery to specific folders by clearing the **Discover assets from all folders** option and then selecting the desired folders.
+
+        <Info>
+        {{PRODUCT}} supports self-hosted or managed instances of Tenable Nessus 6.4.or later. Products with Nessus-compatible APIs such as **Tenable Vulnerability Management** (formerly Tenable.io) can also be configured under the Tenable Nessus seed. However, these products are not fully supported and import may fail due to API limitations. Contact your account manager to find out whether your instance is compatible with {{PRODUCT}}.
+        </Info>
+        
+    -   **Tenable Security Center:**
+
+        1.  In the **Name** option, type a descriptive name.
+        2.  In the **Tenable Security Center URL** option, type the full URL for a Tenable Security Center instance that is accessible by {{ PRODUCT }}. Instances hosted on a private network that require a VPN connection or proxy servers are unsupported.
+
+            **Example:** `https://my-tenable-sc.com`
+
+        3.  Make sure that API key authentication is enabled on your Security Center instance. 
+
+            Enable API key authentication in the Security Center web interface (**System** > **Configuration** > **Security** > **Authentication Settings**) by clicking on the **Allow API Keys** option and then saving this change.
+            See the [Security Center Authentication documentation](https://docs.tenable.com/security-center/Content/EnableAPIKeys.htm) for more details.
+        4.  If you are using a self-signed certificate, clear the **Verify Cert** option to disable certificate verification. This configuration is discouraged for production environments.
+        5.  In the **Access Key** option, paste your Security Center access key. 
+
+            Generate access and secret keys through the Security Center web interface (**Users** > **API Keys** > **Generate**).
+            See the [Security Center documentation](https://docs.tenable.com/security-center/Content/GenerateAPIKey.htm) for more details.
+        6.  In the **Secret Key** option, paste your secret key.
+        7.  Make sure that the user associated with the access key has been assigned the `Vulnerability Analyst` role or higher. This user should also have sufficient permission to access the Security Center API. 
+            See the [Security Center User Roles](https://docs.tenable.com/security-center/Content/UserRoles.htm) for more information.
+        8.  Click on **Test Connection** to verify that {{PRODUCT}} can connect to your Security Center instance with the given credentials.
+        9.  By default, {{PRODUCT}} will discover assets and vulnerabilities from all available repositories in your Security Center instance. Restrict vulnerability and asset discovery to specific repositories by clearing the **Discover assets from all repositories** option and then selecting the desired repositories.
+
+        <Info>
+        {{PRODUCT}} supports self-hosted or managed instances of Tenable Security Center 5.13.x or later. Contact your account manager to find out whether your instance is compatible with {{PRODUCT}}.
+        </Info>
+        
 6.  Click **Create Seed**.
 
 **To modify a collection**

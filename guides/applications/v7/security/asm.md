@@ -162,7 +162,7 @@ You may create, modify, and delete collections. Finally, you can reset a collect
         9.  By default, {{PRODUCT}} will discover assets and vulnerabilities from all available folders in your Nessus instance. Restrict vulnerability and asset discovery to specific folders by clearing the **Discover assets from all folders** option and then selecting the desired folders.
 
         <Info>
-        {{PRODUCT}} supports self-hosted or managed instances of Tenable Nessus 6.4.x or later. Products with Nessus-compatible APIs such as **Tenable Vulnerability Management** (formerly Tenable.io) can also be configured under the Tenable Nessus seed. However, these products are not fully supported and import may fail due to API limitations. Contact your account manager to find out whether your instance is compatible with {{PRODUCT}}.
+        {{PRODUCT}} supports self-hosted or managed instances of Tenable Nessus 6.4 or later. Products with Nessus-compatible APIs such as **Tenable Vulnerability Management** (formerly Tenable.io) can also be configured under the Tenable Nessus seed. However, these products are not fully supported and import may fail due to API limitations. Contact your account manager to find out whether your instance is compatible with {{PRODUCT}}.
         </Info>
         
     -   **Tenable Security Center:**
@@ -188,7 +188,7 @@ You may create, modify, and delete collections. Finally, you can reset a collect
         9.  By default, {{PRODUCT}} will discover assets and vulnerabilities from all available repositories in your Security Center instance. Restrict vulnerability and asset discovery to specific repositories by clearing the **Discover assets from all repositories** option and then selecting the desired repositories.
 
         <Info>
-        {{PRODUCT}} supports self-hosted or managed instances of Tenable Security Center 5.13.x or later. Contact your account manager to find out whether your instance is compatible with {{PRODUCT}}.
+        {{PRODUCT}} supports self-hosted or managed instances of Tenable Security Center 5.13 or later. Contact your account manager to find out whether your instance is compatible with {{PRODUCT}}.
         </Info>
         
 6.  Click **Create Seed**.

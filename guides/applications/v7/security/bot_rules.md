@@ -146,7 +146,7 @@ By default, our browser challenge is served through an {{ PRODUCT }}-branded pag
     <html lang="en-US">
     <head>
     <title>Validating your browser</title>
-        {{BOT_JS}}
+        {{BOT_MUSTACHE_CODE}}
     </head>
     <body>
     <noscript>

@@ -125,7 +125,7 @@ The client's response to the browser challenge determines what happens next.
 
 #### Custom Browser Challenge Template {/*browser-challenge-page-template*/}
 
-By default, our browser challenge is served through an {{ PRODUCT }}-branded page. Serve our browser challenge through your own custom page by enabling the **Custom Browser Challenge Page** option and then setting the **Browser Challenge Page Template** option to the desired Base64-encoded HTML page. This HTML page must satisfy the following requirements:
+By default, our browser challenge is served through an {{ PRODUCT }}-branded page. Serve our browser challenge through your own custom page by enabling the **Custom Browser Challenge Page** option and then setting the **Browser Challenge Page Template** option to the desired HTML page. This HTML page must satisfy the following requirements:
 
 -   It must contain the following mustache: {{BOT_MUSTACHE}}
 
@@ -155,11 +155,6 @@ By default, our browser challenge is served through an {{ PRODUCT }}-branded pag
     <h1>Validating your browser!</h1>
     </body>
     </html>
-    ```
-
-    Below is the Base64-encoded version of the above HTML code.
-    ```Base64-encoded html
-    PCFET0NUWVBFIEhUTUw+CjxodG1sIGxhbmc9ImVuLVVTIj4KPGhlYWQ+Cjx0aXRsZT5WYWxpZGF0aW5nIHlvdXIgYnJvd3NlcjwvdGl0bGU+CiAgICB7e0JPVF9KU319CjwvaGVhZD4KPGJvZHk+Cjxub3NjcmlwdD4KPGgxIGRhdGEtdHJhbnNsYXRlPSJ0dXJuX29uX2pzIiBzdHlsZT0iY29sb3I6I2JkMjQyNjsiPlBsZWFzZSB0dXJuIEphdmFTY3JpcHQgb24gYW5kIHJlbG9hZCB0aGUgcGFnZS48L2gxPgo8L25vc2NyaXB0Pgo8aDE+VmFsaWRhdGluZyB5b3VyIGJyb3dzZXIhPC9oMT4KPC9ib2R5Pgo8L2h0bWw+
     ```
 
 ### Custom Response {/*custom-response*/}

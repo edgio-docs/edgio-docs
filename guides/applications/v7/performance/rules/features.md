@@ -912,7 +912,9 @@ export default new Router()
 
 #### Partial Cache Sharing Min Hit Size {/*partial-cache-sharing-min-hit-size*/}
 
-Defines the minimum file size (bytes) for caching partial content.
+Enables partial cache sharing for assets whose file size matches or exceeds the specified number of bytes.
+
+Partial cache sharing allows {{ PRODUCT }} to cache a partial asset as it receives content from an origin. {{ PRODUCT }} may then serve this partially cached asset for subsequent requests until the asset is fully cached.
 
 <edgejs>
 **Example:**

@@ -49,13 +49,17 @@ The **Log Delivery Service** page under the **Configure** menu displays a list o
 9. Enter the details for your chosen destination.
    - For Amazon S3 see [Configure logs delivery to Amazon S3](#delivery-to-amazon-s3)
    - For Custom HTTPS endpoint see [Configure logs delivery to Custom HTTPS endpoint](#delivery-to-custom-https-endpoint--streaming-)
-   - For Datadog see [Configure logs delivery to Datadog](#delivery-to-datadog--streaming-)
+   - For Datadog see [Configure logs delivery to Datadog (Streaming)](#delivery-to-datadog--streaming-)
    - For Origin Storage see [Configure logs delivery to Edgio Origin Storage](#delivery-to--origin-storage)
    - For Google Cloud Storage see [Configure logs delivery to Google Cloud Storage](#delivery-to-google-cloud-storage)
-   - For Hydrolix see [Configure logs delivery to Hydrolix](#delivery-to-hydrolix--streaming-)
+   - For Hydrolix see [Configure logs delivery to Hydrolix (Streaming)](#delivery-to-hydrolix--streaming-)
+   - For Microsoft Azure Blob Storage see [Configure logs delivery to Microsoft Azure Blob Storage](#delivery-to-microsoft-azure-blob-storage)
+   - For New Relic see [Configure logs delivery to New Relic (Streaming)](#delivery-to-new-relic--streaming-)
+   - For Splunk see [Configure logs delivery to Splunk (Streaming)](#delivery-to-splunk--streaming-)
+   - For Sumo Logic see [Configure logs delivery to Sumo Logic (Streaming)](#delivery-to-sumo-logic--streaming-)
 4. In the **Delivery Options** section, customize the log data format and compression, and set file naming and storage paths.
-   - Use **DIRECTORY LAYOUT** dropdown to choose the folder path within the destination. Available for file-based destinations (S3, GCP, and Origin Storage). For further details refer to [Changing Log Data Location](#log-files-naming-and-location).
-   - The **FILENAME TEMPLATE** dropdown determines the naming convention for log files uploaded to your destination storage. The filename template is fixed and cannot be edited through the UI. Available for file-based destinations (S3, GCP, and Origin Storage). For details refer, see [Changing Log Data Location](#log-files-naming-and-location).
+   - Use **DIRECTORY LAYOUT** dropdown to choose the folder path within the destination. Available for file-based destinations (Amazon S3, Azure Blob Storage, Edgio Origin Storage and Google Cloud Storage). For further details refer to [Changing Log Data Location](#log-files-naming-and-location).
+   - The **FILENAME TEMPLATE** dropdown determines the naming convention for log files uploaded to your destination storage. The filename template is fixed and cannot be edited through the UI. Available for file-based destinations (Amazon S3, Azure Blob Storage, Edgio Origin Storage and Google Cloud Storage). For details refer, see [Changing Log Data Location](#log-files-naming-and-location).
    - In the **DATA FORMAT** dropdown, you can select the format for the uploaded log data. Available formats may vary depending on the selected destination type. See [Log Data Formats](#data-formats).
    - In the **DATA COMPRESSION** dropdown, select the compression format for the log data. The available options may vary based on the selected destination type. Refer to [Log Data Compression](#data-compression) for more information.
 11. In the **Data Sampling** section, configure the volume of delivered log data. For more information, see [Data Sampling](#data-sampling).
@@ -72,12 +76,16 @@ The **Log Delivery Service** page under the **Configure** menu displays a list o
    - In the **Delivery Destination** section, modify the destination details for log delivery as necessary.
      - For Amazon S3 see [Configure logs delivery to Amazon S3](#delivery-to-amazon-s3)
      - For Custom HTTPS endpoint see [Configure logs delivery to Custom HTTPS endpoint](#delivery-to-custom-https-endpoint--streaming-)
-     - For Datadog see [Configure logs delivery to Datadog](#delivery-to-datadog--streaming-)
+     - For Datadog see [Configure logs delivery to Datadog (Streaming)](#delivery-to-datadog--streaming-)
      - For Origin Storage see [Configure logs delivery to Edgio Origin Storage](#delivery-to--origin-storage)
      - For Google Cloud Storage see [Configure logs delivery to Google Cloud Storage](#delivery-to-google-cloud-storage)
-     - For Hydrolix see [Configure logs delivery to Hydrolix](#delivery-to-hydrolix--streaming-)
+     - For Hydrolix see [Configure logs delivery to Hydrolix (Streaming)](#delivery-to-hydrolix--streaming-)
+     - For Microsoft Azure Blob Storage see [Configure logs delivery to Microsoft Azure Blob Storage](#delivery-to-microsoft-azure-blob-storage)
+     - For New Relic see [Configure logs delivery to New Relic (Streaming)](#delivery-to-new-relic--streaming-)
+     - For Splunk see [Configure logs delivery to Splunk (Streaming)](#delivery-to-splunk--streaming-)
+     - For Sumo Logic see [Configure logs delivery to Sumo Logic (Streaming)](#delivery-to-sumo-logic--streaming-)
 4. Under the **Delivery Options** section:
-     - Use **DIRECTORY LAYOUT** dropdown to configure the folder structure within the destination for file-based storage (S3, GCP, and Origin Storage). For more information, see [Changing Log Data Location](#log-files-naming-and-location).
+     - Use **DIRECTORY LAYOUT** dropdown to configure the folder structure within the destination for file-based storage (Amazon S3, Azure Blob Storage, Edgio Origin Storage and Google Cloud Storage). For more information, see [Changing Log Data Location](#log-files-naming-and-location).
      - In the **DATA FORMAT** dropdown choose the format for the log data. The available options may depend on your selected destination. Refer to [Log Data Formats](#data-formats) for more information.
      - In the **DATA COMPRESSION** dropdown select the compression method for the log data. The available choices vary by destination type. See [Log Data Compression](#data-compression) for details.
 5. In the **Data Sampling** section, adjust the volume of log data being delivered. For more information, see [Data Sampling](#data-sampling).
@@ -113,22 +121,28 @@ When configuring LDS, you must select the log fields to be collected and deliver
 
 | Field | Details | Sample Data |
 | --- | --- | --- |
-| cs-accept-language | *(string)* The value of the Accept-Language request header. | fr-MH;q=1.0 |
-| cs-custom-header1 | *(string)* The value of the request header specified in the log_request_header rewrite option. You can include the value of up to five custom headers as defined as log_request_header* fields in Caching and Delivery. | sample-header-value |
-| cs-custom-header2 | *(string)* The value of the request header specified in the log_request_header rewrite option. You can include the value of up to five custom headers as defined as log_request_header* fields in Caching and Delivery. | sample-header-value |
-| cs-custom-header3 | *(string)* The value of the request header specified in the log_request_header3 rewrite option. You can include the value of up to five custom headers as defined as log_request_header* fields in Caching and Delivery. | sample-header-value |
-| cs-custom-header4 | *(string)* The value of the request header specified in the log_request_header4 rewrite option. You can include the value of up to five custom headers as defined as log_request_header* fields in Caching and Delivery. | sample-header-value |
-| cs-custom-header5 | *(string)* The value of the request header specified in the log_request_header5 rewrite option. You can include the value of up to five custom headers as defined as log_request_header* fields in Caching and Delivery. | sample-header-value |
-| cs-headers | *(string)* The value of the HTTP request headers specified in the log_req_header rewrite option. These headers are logged as key-value pairs in this field. If multiple headers are specified to be logged, each key-value pair is separated by a comma. The maximum size of this field is 2048 bytes. If the maximum size is exceeded, error=toolarge is logged. | hdr1=val_1,hdr2=val%20_2|
+| cs-accept-language | *(string)* The value of the `Accept-Language` request header. | fr-MH;q=1.0 |
+| cs-cmcd | *(string)* The CMCD metric sent by a compatible chunk streaming media player as specified by [CTA-5004](https://cdn.cta.tech/cta/media/media/resources/standards/pdfs/cta-5004-final.pdf?_ga=2.236313986.263248173.1645608804-1583879160.1645024234) saved in query term URL-encoded format, regardless of methods used to ingest by player. | bl%3D11700%2Cbr%3D1254
+| cs-cookie | *(string)* The URL-encoded `Cookie` HTTP request header. GDPR Personally Identifiable information is included. | InfoSG=2080446124.14348.0000 |
+| cs-custom-header1 | *(string)* The value of the request header specified in the `log_request_header` rewrite option. You can include the value of up to five custom headers as defined as log_request_header* fields in Caching and Delivery. | sample-header-value |
+| cs-custom-header2 | *(string)* The value of the request header specified in the `log_request_header2` rewrite option. You can include the value of up to five custom headers as defined as log_request_header* fields in Caching and Delivery. | sample-header-value |
+| cs-custom-header3 | *(string)* The value of the request header specified in the `log_request_header3` rewrite option. You can include the value of up to five custom headers as defined as log_request_header* fields in Caching and Delivery. | sample-header-value |
+| cs-custom-header4 | *(string)* The value of the request header specified in the `log_request_header4` rewrite option. You can include the value of up to five custom headers as defined as log_request_header* fields in Caching and Delivery. | sample-header-value |
+| cs-custom-header5 | *(string)* The value of the request header specified in the `log_request_header5` rewrite option. You can include the value of up to five custom headers as defined as log_request_header* fields in Caching and Delivery. | sample-header-value |
+| cs-headers | *(string)* The value of the HTTP request headers specified in the `log_req_header` rewrite option. These headers are logged as key-value pairs in this field. If multiple headers are specified to be logged, each key-value pair is separated by a comma. The maximum size of this field is 2048 bytes. If the maximum size is exceeded, error=toolarge is logged. | hdr1=val_1,hdr2=val%20_2|
 | cs-http-proto | *(string)* The version of the HTTP protocol sent from the client to the server. | HTTP/2.0 |
 | cs-method | *(string)* The HTTP request method (GET, POST, and so on) sent from the client to the server | GET |
 | cs-range | *(string)* The value of the Range header sent from the client to the server. URL-encoded. | bytes=2015-2642 |
 | cs-referer | *(string)* The value of the Referrer header sent from the client to the server. URL-encoded. | https://site.com/page |
 | cs-ssl-cipher | *(string)* The version that the client supports, sent from the client to the server. | AES256-SHA |
 | cs-ssl-proto | *(string)* The version that the client supports, sent from the client to the server. | TLSv1.2 |
+| cs-uri | *(string)* The URL-encoded published URL that includes query strings. Includes GDPR Personally identifiable information. | http://dtvcdn11.dtvcdn.com/B003109030M3.ats?cid=003261089464&ct=1588467344 |
+| cs-uri-host | *(string)* The domain part of the published URL. | dtvcdn11.dtvcdn.com |
+| cs-uri-noquery | *(string)* The URL-encoded published URL (query part excluded). | http://dtvcdn11.dtvcdn.com/B003109030M3.ats |
+| cs-uri-path | *(string)* The URL path from the published URL, excluding the query string, starting after the hostname. | B003109030M3.ats |
+| cs-uri-query | *(string)* The portion of the published URL that contains the query parameters, reported without the leading question mark | cid=003261089464&ct=1588467344 |
+| cs-uri-scheme | *(string)* The published URL scheme. Valid values: `http, https`. | http |
 | cs-user-agent | *(string)* The value of the User-Agent header in the request from the client to the server. URL-encoded. | Microsoft%20BITS/7.5%20 |
-| duration | *(int32)* The request duration in milliseconds. | 29298749 |
-| duration-sec | *(int32)* The request duration formatted as `{seconds}.{milliseconds}`  | 29298.749 |
 
 #### Server-Client Communication-Related Metrics {/*server-client-communication-related-metrics*/}
 
@@ -146,6 +160,8 @@ When configuring LDS, you must select the log fields to be collected and deliver
 | sc-status | *(string)* The HTTP status code in the response from the server to the client. <br /> In addition to standard Content Delivery status codes, the sc-status field may contain non-standard status codes: <br /> _000_ A Edgio-specific status code returned when the origin sends no response, so there is no status code to log (for example when the client disconnects before the origin delivers the response). <br /> _600_ A Edgio-specific status code indicating the origin returned a non-HTTP-compliant response so a status code could not be obtained. <br /> For a list of standard status codes, see Response Codes in the Content Delivery User Guide | 200, 206, 400 |
 | sc-status-code | *(int32)* The HTTP response status code, provided as an integer. | 200 |
 | sc-status-msg | *(string)* The response HTTP status message generated by the edge server | OK |
+| duration | *(int32)* The request duration in milliseconds. | 29298749 |
+| duration-sec | *(int32)* The request duration formatted as `{seconds}.{milliseconds}`  | 29298.749 |
 
 #### Client-Related Metrics {/*client-related-metrics*/}
 
@@ -163,7 +179,6 @@ When configuring LDS, you must select the log fields to be collected and deliver
 | c-ip-ver | *(string)* The client’s IP version number. Valid values: INET (IPv4), INET6 (IPv6). | INET |
 | c-port | *(string)* The client remote port number used for a connection. | 80832 |
 | c-state | *(string)* The State name derived from the client IP address using the IPGeo DB. | arizona |
-
 
 #### Server-Related Metrics {/*server-related-metrics*/}
 
@@ -258,7 +273,7 @@ Field aliases allow you to assign alternative names to log fields. Aliases can b
 
 ## Configure Destinations {/*configure-destinations*/}
 
-LDS supports delivery to the following destinations: Amazon S3, Custom HTTPS endpoint, Datadog, Edgio Origin Storage, Google Cloud Storage, and Hydrolix.
+LDS supports delivery to the following destinations: Amazon S3, Custom HTTPS endpoint, Datadog, Edgio Origin Storage, Google Cloud Storage, Hydrolix and Microsoft Azure Blob Storage.
 
 ### Delivery to Amazon S3 {/*delivery-to-amazon-s3*/}
 
@@ -313,7 +328,7 @@ LDS supports streaming log data to a custom HTTPS endpoint using POST requests. 
 - **A Datadog API key**: Generate via Datadog. (See Datadog’s documentation on API and Application Keys.)
 
 **Configuration**
-1. On the `LDS Configuration` screen, in the **Delivery Destination** section, select **Datadog** from the dropdown.
+1. On the `LDS Configuration` screen, in the **Delivery Destination** section, select **Datadog (Streaming)** from the dropdown.
 2. Enter the following details:
    - **SITE**: Select the Datadog site region that matches your Datadog environment.
    - **API KEY**: Enter the API key associated with your Datadog account.
@@ -374,7 +389,7 @@ LDS supports streaming log data to a custom HTTPS endpoint using POST requests. 
 - Create a [Transform](https://docs.hydrolix.io/docs/transforms-and-write-schema)
 
 **Configuration**
-1. On the `LDS Configuration` screen, in the **Delivery Destination** section, select **Hydrolix** from the dropdown.
+1. On the `LDS Configuration` screen, in the **Delivery Destination** section, select **Hydrolix (Streaming)** from the dropdown.
 2. Enter the following details:
    - **STREAMING API HOSTNAME**: Enter the hostname of your Hydrolix Streaming API. This value will be used in the URL `https://<hydrolix-streaming-api-hostname>/ingest/event` for log ingestion.
    - **PROJECT NAME**: Enter the Hydrolix project name to include in the `x-hdx-project` HTTP header.
@@ -386,6 +401,82 @@ LDS supports streaming log data to a custom HTTPS endpoint using POST requests. 
 4. Click **Save** to validate the connection to the destination and apply your settings.
 
 <Callout type="info">During validation, LDS sends a sample POST request with a JSON payload and GZIP compression to the provided Hydrolix endpoint to verify access. A response with any 2xx status code indicates that the validation is successful.</Callout>
+
+### Delivery to Microsoft Azure Blob Storage {/*delivery-to-microsoft-azure-blob-storage*/}
+
+**Prerequisites**
+
+1. Create an Azure storage account. See Microsoft’s [guide for instructions](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal).
+2. Create a container to which log data will be uploaded. Refer to Microsoft’s [guide for instructions](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container).
+2. Obtain [SAS token](https://learn.microsoft.com/en-us/azure/ai-services/translator/document-translation/how-to-guides/create-sas-tokens?tabs=Containers) or an [access key](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?tabs=azure-portal) for authorizing requests to upload content to your Azure Blob Storage account.
+
+**Configuration**
+1. On the `Create/Update LDS Configuration` page in the **Delivery Destination** section, choose **Microsoft Azure** from the dropdown.
+2. Enter the name of your storage account in the **ACCOUNT NAME** field.
+3. Specify the name of Azure conatiner to which log data will be uploaded in the **CONTAINER NAME** field.
+4. From the **ACCESS METHOD** dropdown, select your preferred authorization method. Then, enter the access key or SAS token in the input field that appears next to it.
+5. Optionally, in the **Delivery Options** section:
+   - Change the **DIRECTORY LAYOUT** to customize how logs are organized within a bucket. For details, refer to [Log Files Naming and Location](#log-files-naming-and-location).
+   - Choose the **DATA COMPRESSION** method for your log files. Supported options include: LZ4 *(default)*, GZIP, LZF, SNAPPY, ZSTD.
+   - Select the log **DATA FORMAT:**: [W3C (Tab-Separated)](#w3c)*(default)*, [TSV](#tsv), [JSON Lines](#json-lines), [JSON Array](#json-array), [JSON](#json).
+   - If you need fields with `null` values to be included in JSON format files, select the **INCLUDE NULL VALUES IN JSON** option, as they are excluded by default.
+6. Optionally, in the **Data Sampling** section, reduce the volume of delivered logs by applying sampling rules. Refer to the [Data Sampling](#data-sampling) for additional details.
+7. Click **Save** to validate the connection to the destination and apply your settings.
+
+<Callout type="info">During the validation process, LDS creates a test file in the specified container using the provided credentials and settings. The file is named `_edgio_validation/validation_{timestamp}.txt`. The file will only appear if the validation is successful. Since these files are no longer necessary after validation, you can delete them as needed.</Callout>
+
+### Delivery to New Relic (Streaming) {/*delivery-to-new-relic--streaming-*/}
+
+**Prerequisites**
+- [Register a New Relic account](https://newrelic.com/signup) or use existing one.
+- Obtain your [license ingest key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/).
+
+**Configuration**
+1. On the `LDS Configuration` screen, in the **Delivery Destination** section, select **New Relic (streaming)** from the dropdown.
+2. In the **DOMAIN** field, enter the New Relic API domain. This value will be used in the URL `https://<new-relic-domain>/log/v1` for log ingestion.
+3. In the **API KEY** field, enter your account licence ingest key you created earlier .
+4. Optionally, in the **Data Sampling** section, reduce the volume of delivered logs by applying sampling rules. Refer to the [Data Sampling](#data-sampling) for additional details.
+5. Click **Save** to validate the connection to the destination and apply your settings.
+
+<Callout type="info">During validation, LDS sends a sample POST request with a JSON payload and GZIP compression to the provided New Relic endpoint to verify access. A response with any 2xx status code indicates that the validation is successful.</Callout>
+
+### Delivery to Splunk (Streaming) {/*delivery-to-splunk--streaming-*/}
+
+**Prerequisites**
+
+LDS supports sending log data to Splunk over HTTPS, requiring the HTTP Event Collector (HEC) to be configured and enabled on your Splunk instance. 
+- Follow this [guide](https://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector#Enable_HTTP_Event_Collector_on_Splunk_Cloud_Platform) to set up and enable the HEC. 
+- Ensure that [indexer acknowledgment](https://docs.splunk.com/Documentation/Splunk/9.3.1/Data/AboutHECIDXAck) is disabled in your HEC configuration. 
+- Save the HEC token and the URL pointing to your Splunk HTTP Event Collector.
+
+**Configuration**
+1. On the `LDS Configuration` screen, in the **Delivery Destination** section, select **Splunk (Streaming)** from the dropdown.
+2. In the **DOMAIN** field, enter the Splunk HEC API domain. This value will be used in the URL `https://<splunk-domain>/services/collector/event ` for log ingestion.
+3. In the **EVENT COLLECTOR TOKEN** field, enter the HEC token you created and enabled in Splunk.
+4. Optionally, in the **INDEX** field, specify the index name by which the event data is to be indexed. The index you specify here must be within the list of allowed indexes if the HEC token has the indexes parameter set.
+5. Optionally, in the **FIELDS** input, provide a JSON object with custom fields to include in log events. These fields will be sent as metadata and indexed by Splunk. Example: `{"env":"production", "region":"us-west"}`.
+6. Optionally, in the **SOURCE** Type field, specify the source type value to assign to the event data.
+7. Optionally, in the **Data Sampling** section, reduce the volume of delivered logs by applying sampling rules. Refer to the [Data Sampling](#data-sampling) for additional details.
+8. Click **Save** to validate the connection to the destination and apply your settings.
+
+<Callout type="info">During validation, LDS sends a sample POST request with a JSON payload and GZIP compression to the HEC endpoint to verify access. A response with any 2xx status code indicates that the validation is successful.</Callout>
+
+### Delivery to Sumo Logic (Streaming) {/*delivery-to-sumo-logic--streaming-*/}
+
+**Prerequisites**
+
+To configure Sumo Logic as a logging endpoint, start by creating a Sumo Logic account. Next, add an **HTTP Logs and Metrics Source** and save the **HTTP Source URL**. For setup instructions, refer to the [Sumo Logic source configuration guide](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/logs-metrics/).
+
+**Configuration**
+1. On the `LDS Configuration` screen, in the **Delivery Destination** section, select **Sumo Logic (streaming)** from the dropdown.
+2. In the **ENDPOINT** field, enter the domain name of the Sumo Logic HTTP source which will form the URL `https://<endpoint>/receiver/v1/http` for log ingestion.
+3. In the **HTTP COLLECTOR CODE** field, enter the code from your Sumo Logic endpoint URL. This is the last part of the URL in the format `https://<SumoEndpoint>/receiver/v1/http/<HTTPCollectorCode>`.
+4. Optionally, in the **SOURCE CATEGORY** field, specify acustom source category. This value will be sent in the `X-Sumo-Category` header.
+5. Optionally, in the **FIELDS** input, provide key-value pairs to tag your logs for easier searching. These tags will be sent in the `X-Sumo-Fields` header.  Example: environment=dev,cluster=k8s. 
+6. Optionally, in the **Data Sampling** section, reduce the volume of delivered logs by applying sampling rules. Refer to the [Data Sampling](#data-sampling) for additional details.
+7. Click **Save** to validate the connection to the destination and apply your settings.
+
+<Callout type="info">During validation, LDS sends a sample POST request with a JSON payload and GZIP compression to the Sumo Logic HTTP Source endpoint to verify access. A response with any 2xx status code indicates that the validation is successful.</Callout>
 
 
 ## Data Formats {/*data-formats*/}
@@ -414,7 +505,7 @@ date    time    s-host  c-ip    c-country   c-city  sc-bytes    s-ttfb  duration
 2024-09-05  01:10:51.706    cds102.jed.llnw.net 10.252.49.10    -   -   259 0   0
 2024-09-05  01:12:18.018    cds102.sabf.llnw.net    185.76.48.149   united kingdom  southampton 455 262 262
 ```
-<Callout type="info">Log files delivered to S3, GCP, and Origin Storage include TSV headers, while messages sent to Custom HTTPS Endpoints do not.</Callout>
+<Callout type="info">Log files delivered to Amazon S3, Azure Blob Storage, Edgio Origin Storage and Google Cloud Storage include TSV headers, while messages sent to Custom HTTPS Endpoints do not.</Callout>
 
 #### JSON Lines{/*json-lines*/}
 Each log entry is a separate JSON object, with each object represented on a single line.
@@ -478,7 +569,7 @@ For file delivery destinations, LDS allows you to manage where logs are placed a
 
 The log file location is determined by the following properties:
 
-- **PATH**: This is an optional static root path within the storage which can be specified in the `Delivery Destination` section on the `Create/Edit LDS configuration page` only when `Amazon S3` or `Google Cloud Storage` is selected.
+- **PATH**: This is an optional static root path within the storage which can be specified in the `Delivery Destination` section on the `Create/Edit LDS configuration page` only when `Amazon S3`, `Google Cloud Storage` or `Microsoft Azure Blob Storage` is selected.
 
 - **DIRECTORY LAYOUT**: Defines the folder structure within the path. It supports these dynamic placeholders that are replaced with relevant information during file upload:
   - `{service_type}`: Type of service for which logs are collected.
@@ -491,7 +582,7 @@ The log file location is determined by the following properties:
 To configure the Directory Layout, go to the `Delivery Options` section on the `Create/Update LDS Configuration` screen and pick one of the following:
 - `{service_type}/{config_uuid}/{yyyy_proc}/{MM_proc}/{dd_proc}` (default): Organizes directories by service type, configuration UUID, and the date when the file was processed by LDS.
 - `{service_type}/{config_uuid}/{yyyy}/{MM}/{dd}`: Organizes directories by service type, configuration UUID, and the date range of the log entries.
-- `No Subdirectories`: Places all log files in the root directory of the storage, without any subdirectory structure. This option is available for Amazon S3 and Google Cloud Storage. 
+- `No Subdirectories`: Places all log files in the root directory of the storage, without any subdirectory structure. This option is available for Amazon S3, Google Cloud Storage and Microsoft Azure Blob Storage. 
 
 ### Log File Naming {/*log-file-naming*/}
 

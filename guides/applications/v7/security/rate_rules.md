@@ -123,6 +123,7 @@ The maximum rate at which requests will be honored before a predefined action is
     </Callout>
 
 -   The specified rate limit is enforced on each POP based on the number of requests that it receives.
+-   {{ PRODUCT }} Premier customers may specify a duration longer than 5 minutes (i.e., 10, 15, and 30 minutes) when rate limiting by IP address. Adding another source (e.g., user agent, request header, or cookie) restricts the maximum duration to 5 minutes.
 
 ### Condition Group {/*condition-group*/}
 
@@ -274,7 +275,7 @@ The types of prerequisites that may be defined are described below.
     -   **Condition groups per rate rule:** 5
     -   **Conditions per condition group:** 5
     -   **# of values per condition:**
-        -   **IP Address:** 200
+        -   **IP Address:** 300
         -   **All Other Conditions:** 100
 
         <Callout type="info">

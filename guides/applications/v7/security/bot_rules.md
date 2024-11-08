@@ -125,7 +125,7 @@ The client's response to the browser challenge determines what happens next.
 
 #### Custom Browser Challenge Template {/*browser-challenge-page-template*/}
 
-By default, our browser challenge is served through an {{ PRODUCT }}-branded page. Serve our browser challenge through your own custom page by enabling the **Custom Browser Challenge Page** option and then setting the **Browser Challenge Page Template** option to the desired Base64-encoded HTML page. This HTML page must satisfy the following requirements:
+By default, our browser challenge is served through an {{ PRODUCT }}-branded page. Serve our browser challenge through your own custom page by enabling the **Custom Browser Challenge Page** option and then setting the **Browser Challenge Page Template** option to the desired HTML page. This HTML page must satisfy the following requirements:
 
 -   It must contain the following mustache: {{BOT_MUSTACHE}}
 
@@ -139,6 +139,23 @@ By default, our browser challenge is served through an {{ PRODUCT }}-branded pag
 
 -   It must check whether the user agent allows JavaScript using a `<noscript>` tag. Your custom HTML must display an error message if it has been disabled.
 -   If your scripts sets third-party cookies, then your custom HTML must display an error message if they have been disabled.
+-   **Example:** HTML code for a sample browser challenge is provided below.
+
+    ```html
+    <!DOCTYPE HTML>
+    <html lang="en-US">
+    <head>
+    <title>Validating your browser</title>
+        {{BOT_MUSTACHE_CODE}}
+    </head>
+    <body>
+    <noscript>
+    <h1 data-translate="turn_on_js" style="color:#bd2426;">Please turn JavaScript on and reload the page.</h1>
+    </noscript>
+    <h1>Validating your browser!</h1>
+    </body>
+    </html>
+    ```
 
 ### Custom Response {/*custom-response*/}
 

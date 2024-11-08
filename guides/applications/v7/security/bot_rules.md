@@ -139,6 +139,28 @@ By default, our browser challenge is served through an {{ PRODUCT }}-branded pag
 
 -   It must check whether the user agent allows JavaScript using a `<noscript>` tag. Your custom HTML must display an error message if it has been disabled.
 -   If your scripts sets third-party cookies, then your custom HTML must display an error message if they have been disabled.
+-   **Example:** HTML code for a sample browser challenge is provided below.
+
+    ```html
+    <!DOCTYPE HTML>
+    <html lang="en-US">
+    <head>
+    <title>Validating your browser</title>
+        {{BOT_JS}}
+    </head>
+    <body>
+    <noscript>
+    <h1 data-translate="turn_on_js" style="color:#bd2426;">Please turn JavaScript on and reload the page.</h1>
+    </noscript>
+    <h1>Validating your browser!</h1>
+    </body>
+    </html>
+    ```
+
+    Below is the Base64-encoded version of the above HTML code.
+    ```Base64-encoded html
+    PCFET0NUWVBFIEhUTUw+CjxodG1sIGxhbmc9ImVuLVVTIj4KPGhlYWQ+Cjx0aXRsZT5WYWxpZGF0aW5nIHlvdXIgYnJvd3NlcjwvdGl0bGU+CiAgICB7e0JPVF9KU319CjwvaGVhZD4KPGJvZHk+Cjxub3NjcmlwdD4KPGgxIGRhdGEtdHJhbnNsYXRlPSJ0dXJuX29uX2pzIiBzdHlsZT0iY29sb3I6I2JkMjQyNjsiPlBsZWFzZSB0dXJuIEphdmFTY3JpcHQgb24gYW5kIHJlbG9hZCB0aGUgcGFnZS48L2gxPgo8L25vc2NyaXB0Pgo8aDE+VmFsaWRhdGluZyB5b3VyIGJyb3dzZXIhPC9oMT4KPC9ib2R5Pgo8L2h0bWw+
+    ```
 
 ### Custom Response {/*custom-response*/}
 

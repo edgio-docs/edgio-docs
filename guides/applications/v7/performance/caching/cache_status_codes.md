@@ -44,7 +44,7 @@ This status indicates that a cached version of the requested asset was not found
 
 This status indicates that an edge server found a partially cached asset for the requested content and served it to the client. Partially cached content is typically a result of:
 -   **Byte Range Requests:** A client may request a specific portion of an asset through the `Range` request header. {{ PRODUCT }} can then cache the requested range and serve this partial asset for subsequent requests. 
--   [Partial Cache Sharing Min Hit Size Feature](/applications/performance/rules/features#partial-cache-sharing-min-hit-size)**:** This feature allows {{ PRODUCT }} to cache content as it receives the response. {{ PRODUCT }} may then serve this partially cached content to subsequent requests while the cache fill is in progress. 
+-   [Partial Cache Sharing Min Hit Size Feature](/applications/performance/rules/features#partial-cache-sharing-min-hit-size)**:** This feature allows {{ PRODUCT }} to cache content as it receives the response. {{ PRODUCT }} may then serve this partially cached content for subsequent requests while the cache fill is in progress. 
 
 ## UNCACHEABLE {/*uncacheable*/}
 

@@ -141,7 +141,9 @@ Purge cached content through the {{ PRODUCT }} REST API through the [Purge Cache
 
 ## Deployments {/*deployments*/}
 
-By default, cached content is preserved when you deploy a new version of your site. Override this behavior by clearing the **Preserve cache between deployments** setting on the **Caching** page.
+By default, cached content is preserved when you deploy a new version of your site. Override this behavior when deploying changes by marking the **Purge the cache after deployment** setting on the **Deploy Changes** popup. The default state for this option is determined by the **Caching** page's **Automatically purge the cache on deployments** option.
+
+![Deploy Changes - Purge the cache after deployment](/images/v7/performance/deploy-changes.png)
 
 <Callout type="warning">
 

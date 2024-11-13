@@ -575,10 +575,12 @@ When deploying your project, it's important to distinguish between the edge link
 
 Edge Function Limitations:
 
-- Wall-time Timeout: 60s
-- CPU Time Limit: 50ms
-- Runtime Memory Limit: 4MB
-- Code Package Size Limit: 512KB
+| Metric            | Limit           |
+| ----------------- | --------------- |
+| Wall Clock Time   | 60 seconds      |
+| CPU Time          | 50 milliseconds |
+| Runtime Memory    | 4 MB            |
+| Code Package Size | 512 KB          |
 
 The code package size refers to the compiled JavaScript bytecode. All edge functions are bundled into a single package for deployment to our edge servers. If the total compiled size exceeds 512KB, the deployment will fail and return a 400 error:
 

@@ -18,7 +18,7 @@ Caching creates a copy of the requested content within our edge and Origin Shiel
 
 Each environment has a separate edge cache. The **Deploy Changes** popup's **Purge the cache after deployment** option determines whether this edge cache persists between deployments.
 
-[Learn how to configure this option.](/applications/purging#deployments)
+[Learn how to configure this option.](/applications/performance/caching/purging#deployments)
 
 ## Edge and Origin Shield Caching {/*edge-and-shield-caching*/}
 

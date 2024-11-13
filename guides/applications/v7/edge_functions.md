@@ -573,13 +573,13 @@ When deploying your project, it's important to distinguish between the edge link
 
 ![Permalink and Edge Link in {{ PORTAL }}](/images/deploying/deploy_links.png?width=800)
 
-Edge Function Limitations:
+Edge Function limitations:
 
 | Metric            | Limit           |
 | ----------------- | --------------- |
 | Wall Clock Time   | 60 seconds      |
-| CPU Time          | 50 milliseconds |
-| Runtime Memory    | 4 MB            |
+| Execution Time    | 50 milliseconds |
+| Memory            | 4 MB            |
 | Code Package Size | 512 KB          |
 
 The code package size refers to the compiled JavaScript bytecode. All edge functions are bundled into a single package for deployment to our edge servers. If the total compiled size exceeds 512KB, the deployment will fail and return a 400 error:

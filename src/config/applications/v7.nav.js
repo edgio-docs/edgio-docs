@@ -263,6 +263,10 @@ const nav = {
       icon: 'edge-functions',
       routes: [
         {
+          title: 'Overview',
+          path: 'edge_functions'
+        },
+        {
           title: 'Caching',
           path: 'edge_functions/caching',
         },

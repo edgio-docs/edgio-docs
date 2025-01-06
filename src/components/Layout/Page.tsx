@@ -58,6 +58,37 @@ export function Page({children}: PageProps) {
 
   return (
     <StyledMainPage>
+      <StyledTopMessage>
+        <div className="inner-container">
+          <p>
+            As part of our filing for Chapter 11 bankruptcy relief,{' '}
+            <a
+              href="https://www.akamai.com/newsroom/press-release/akamai-completes-acquisition-of-select-assets-of-edgio"
+              style={{color: '#6d28d9'}}>
+              Akamai has acquired
+            </a>{' '}
+            select assets from Edgio, including certain customer contracts from
+            our content delivery and security businesses, but not including{' '}
+            <a href="https://uplynk.com">Uplynk</a>. We encourage any active
+            Edgio delivery or security customers that are not already engaged
+            with Akamai to migrate their services, to contact their{' '}
+            <a
+              href="https://www.akamai.com/company/locations"
+              style={{color: '#6d28d9'}}>
+              local Akamai office
+            </a>{' '}
+            or <a href="mailto:support@edg.io">support@edg.io</a> as soon as
+            possible to help avoid service interruptions.
+          </p>
+          <br />
+          <p>
+            Any Edgio <a href="https://uplynk.com">Uplynk</a> customers can
+            reach out to{' '}
+            <a href="mailto:support@uplynk.com">support@uplynk.com</a> for any
+            questions or concerns.
+          </p>
+        </div>
+      </StyledTopMessage>
       {isMobile ? (
         <MobileHeader />
       ) : (
@@ -78,6 +109,22 @@ export function Page({children}: PageProps) {
     </StyledMainPage>
   );
 }
+
+const StyledTopMessage = styled.div`
+  padding: 1rem;
+  background: #e2e8f0;
+  color: #0f172a;
+  font-weight: medium;
+
+  .inner-container {
+    margin: 0 auto;
+    max-width: 960px;
+  }
+
+  a {
+    color: #6d28d9;
+  }
+`;
 
 interface StyledBannerProps {
   legacy?: boolean;

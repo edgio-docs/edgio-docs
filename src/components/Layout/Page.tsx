@@ -68,17 +68,19 @@ export function Page({children}: PageProps) {
               Akamai has acquired
             </a>{' '}
             select assets from Edgio, including certain customer contracts from
-            our content delivery and security businesses, but not including{' '}
-            <a href="https://uplynk.com">Uplynk</a>. We encourage any active
-            Edgio delivery or security customers that are not already engaged
-            with Akamai to migrate their services, to contact their{' '}
+            our content delivery, applications, and security businesses, but not
+            including <a href="https://uplynk.com">Uplynk</a>. We encourage any
+            active Edgio delivery, applications, or security customers that are
+            not already engaged with Akamai to migrate their services, to
+            contact their{' '}
             <a
               href="https://www.akamai.com/company/locations"
               style={{color: '#6d28d9'}}>
               local Akamai office
             </a>{' '}
             or <a href="mailto:support@edg.io">support@edg.io</a> as soon as
-            possible to help avoid service interruptions.
+            possible to help avoid service interruptions.{' '}
+            <b>Service will end on January 15, 2025.</b>
           </p>
           <br />
           <p>

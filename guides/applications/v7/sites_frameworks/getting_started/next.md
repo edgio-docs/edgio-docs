@@ -248,6 +248,7 @@ export default new Router()
   });
 ```
 
+<!--
 ### Preview Mode {/* preview-mode */}
 
 To be able to use [Preview Mode](https://nextjs.org/docs/advanced-features/preview-mode) while being able to cache the respective pages, update your routes to match the requests that contain the two cookies `__prerender_bypass` & `__next_preview_data`, and send those to the {{ PRODUCT }} cloud for rendering.
@@ -275,6 +276,7 @@ export default new Router()
     }
   );
 ```
+-->
 
 ### Rewrites and Redirects {/* rewrites-and-redirects */}
 
